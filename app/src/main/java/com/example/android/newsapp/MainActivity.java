@@ -1,15 +1,15 @@
 package com.example.android.newsapp;
 
 import android.app.LoaderManager;
+import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.LoaderManager.LoaderCallbacks;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -19,23 +19,33 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<Article>>{
+public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<Article>> {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    /** URL for articles data from the content.guardianapis.com */
+    /**
+     * URL for articles data from the content.guardianapis.com
+     */
     private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?section=technology&from-date=2018-05-24&show-tags=contributor&api-key=test";
 
-    /** Constant value for the earthquake loader ID */
+    /**
+     * Constant value for the earthquake loader ID
+     */
     private static final int ARTICLE_LOADER_ID = 1;
 
-    /** Adapter for the list of earthquakes */
+    /**
+     * Adapter for the list of earthquakes
+     */
     private ArticleAdapter mAdapter;
 
-    /** Empty state TextView */
+    /**
+     * Empty state TextView
+     */
     private TextView mEmptyStateTextView;
 
-    /** Spinner progress bar */
+    /**
+     * Spinner progress bar
+     */
     private ProgressBar loadingSpinner;
 
     @Override

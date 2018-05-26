@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -28,16 +28,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/TopArticleDetails"
                     android:id="@+id/article_section"
+                    style="@style/TopArticleDetails"
                     android:textAllCaps="true"
                     tools:text="@string/tools_section" />
 
                 <TextView
-                    style="@style/TopArticleDetails"
                     android:id="@+id/article_date"
-                    tools:text="@string/tools_date"
-                    android:textAlignment="viewEnd"/>
+                    style="@style/TopArticleDetails"
+                    android:textAlignment="viewEnd"
+                    tools:text="@string/tools_date" />
 
             </LinearLayout>
 
@@ -53,14 +53,14 @@
 
             <TextView
                 android:id="@+id/article_contributor"
-                android:textAlignment="viewEnd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
+                android:paddingTop="@dimen/m_padding"
+                android:textAlignment="viewEnd"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/s_text_size"
-                tools:text="@string/tools_contributor"
-                android:paddingTop="@dimen/m_padding"/>
+                tools:text="@string/tools_contributor" />
 
         </LinearLayout>
 

@@ -20,17 +20,21 @@ import java.util.List;
 
 public final class QueryUtils {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     public static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
-    /** A private black constructor */
+    /**
+     * A private black constructor
+     */
     private QueryUtils() {
     }
 
     /**
      * Returns an URL object from the given string URL.
      */
-    private static URL createUrl (String stringUrl) {
+    private static URL createUrl(String stringUrl) {
         URL url = null;
         try {
             url = new URL(stringUrl);
@@ -153,7 +157,7 @@ public final class QueryUtils {
                     // For each contributor get the title with the key "webTitle"
                     for (int j = 0; j < tagsArray.length(); j++) {
                         JSONObject currentTag = tagsArray.getJSONObject(j);
-                        if (j == tagsArray.length()-1) {
+                        if (j == tagsArray.length() - 1) {
                             contributorsStringBuilder.append(currentTag.getString("webTitle"));
                         } else {
                             contributorsStringBuilder.append(currentTag.getString("webTitle")).append(" & ");
@@ -180,7 +184,7 @@ public final class QueryUtils {
     /**
      * Query the content.guardianapis.com and return a list of Article objects.
      */
-    public static List<Article> fetchArticlesData (String requestUrl) {
+    public static List<Article> fetchArticlesData(String requestUrl) {
         // Create URL object
         URL url = createUrl(requestUrl);
 

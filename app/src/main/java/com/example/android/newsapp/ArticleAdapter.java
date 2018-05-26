@@ -17,12 +17,15 @@ import java.util.Date;
 
 public class ArticleAdapter extends ArrayAdapter<Article> {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     public static final String LOG_TAG = ArticleAdapter.class.getSimpleName();
 
     /**
      * Constructs a new ArticleAdapter
-     * @param context of the app
+     *
+     * @param context  of the app
      * @param articles is the list of articles
      */
     public ArticleAdapter(@NonNull Activity context, @NonNull ArrayList<Article> articles) {
@@ -36,7 +39,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
 
-        if(listItemView == null) {
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 

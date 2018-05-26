@@ -8,16 +8,18 @@ import java.util.List;
 /**
  * Loads a list of articles by using an AsyncTask to perform the network request to the given URL.
  */
-public class ArticleLoader extends AsyncTaskLoader<List<Article>>{
+public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
 
-    /** Query URL */
+    /**
+     * Query URL
+     */
     private String mUrl;
 
     /**
      * Constructs a new ArticleLoader
      *
      * @param context of the activity
-     * @param url to load data from it
+     * @param url     to load data from it
      */
     public ArticleLoader(Context context, String url) {
         super(context);

@@ -6,11 +6,11 @@
     <!-- Layout for a list of articles -->
     <ListView
         android:id="@+id/list"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:dividerHeight="0dp"/>
+        android:dividerHeight="0dp"
+        android:orientation="vertical" />
 
     <!-- Loading indicator showed before load the articles -->
     <ProgressBar
@@ -18,7 +18,7 @@
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true" />
 
     <!-- Empty view visible when the list has no items -->
     <TextView

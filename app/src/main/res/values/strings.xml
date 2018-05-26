@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">News App</string>
+    <string name="tools_section">Technology</string>
+    <string name="tools_date">Feb 2, 2016</string>
+    <string name="tools_title">Facebook launches disclaimers on political ads showing who bought them</string>
+    <string name="tools_contributor">Julia Carrie Wong</string>
+    <string name="no_articles">No news found</string>
+    <string name="no_internet">No internet connection.</string>
+</resources>

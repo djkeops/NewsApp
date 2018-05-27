@@ -21,20 +21,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<Article>> {
 
-    public static final String LOG_TAG = MainActivity.class.getSimpleName();
-
     /**
      * URL for articles data from the content.guardianapis.com
      */
     private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?section=technology&from-date=2018-05-24&show-tags=contributor&api-key=test";
 
     /**
-     * Constant value for the earthquake loader ID
+     * Constant value for the article loader ID
      */
     private static final int ARTICLE_LOADER_ID = 1;
 
     /**
-     * Adapter for the list of earthquakes
+     * Adapter for the list of articles
      */
     private ArticleAdapter mAdapter;
 
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         // Set empty state text to display "No news found."
         mEmptyStateTextView.setText(R.string.no_articles);
 
-        // Clear the adapter of previous earthquake data
+        // Clear the adapter of previous articles data
         mAdapter.clear();
 
         // If there is a valid list of articles, then add them to the adapter's data set.

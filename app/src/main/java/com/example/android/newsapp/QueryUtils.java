@@ -23,7 +23,22 @@ public final class QueryUtils {
     /**
      * Tag for the log messages
      */
-    public static final String LOG_TAG = QueryUtils.class.getSimpleName();
+    private static final String LOG_TAG = QueryUtils.class.getSimpleName();
+
+    /**
+     * Read timeout in milliseconds
+     */
+    private static final int READ_TIMEOUT_MS = 10000;
+
+    /**
+     * Connect timeout in milliseconds
+     */
+    private static final int CONNECT_TIMEOUT_MS = 15000;
+
+    /**
+     * Success response code for url connection
+     */
+    private static final int SUCCESS_RESPONSE_CODE = 200;
 
     /**
      * A private black constructor
@@ -75,13 +90,13 @@ public final class QueryUtils {
 
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000);
-            urlConnection.setConnectTimeout(15000);
+            urlConnection.setReadTimeout(READ_TIMEOUT_MS);
+            urlConnection.setConnectTimeout(CONNECT_TIMEOUT_MS);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
             // If the request was successful (response code 200), then read the input stream and parse the response
-            if (urlConnection.getResponseCode() == 200) {
+            if (urlConnection.getResponseCode() == SUCCESS_RESPONSE_CODE) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
@@ -131,10 +146,12 @@ public final class QueryUtils {
                 JSONObject currentArticle = articlesArray.getJSONObject(i);
 
                 // Extract the article section with the key "sectionName"
-                String articleSection = currentArticle.getString("sectionName");
+                // I use here optString() in case there is no sectionName in json
+                String articleSection = currentArticle.optString("sectionName");
 
                 // Extract the article date with the key "webPublicationDate"
-                String articleDate = currentArticle.getString("webPublicationDate");
+                // I use here optString() in case there is no webPublicationDate in json
+                String articleDate = currentArticle.optString("webPublicationDate");
 
                 // Extract the article url with the key "webUrl"
                 String articleUrl = currentArticle.getString("webUrl");

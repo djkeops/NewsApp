@@ -6,4 +6,57 @@
     <string name="tools_contributor">Julia Carrie Wong</string>
     <string name="no_articles">No news found</string>
     <string name="no_internet">No internet connection.</string>
+
+    <!-- Settings Menu Item -->
+    <string name="settings_menu_item">Settings</string>
+
+    <!-- Settings Activity Title -->
+    <string name="settings_title">News App Settings</string>
+
+    <!-- Strings For Section Preference -->
+    <string name="settings_section_label">Section</string>
+    <string name="settings_section_key" translatable="false">section</string>
+    <string name="settings_section_default" translatable="false">@string/settings_section_all_value</string>
+
+    <!-- Label for All Section option -->
+    <string name="settings_section_all_label">All</string>
+    <string name="settings_section_all_value" translatable="false">""</string>
+
+    <!-- Label for World Section option -->
+    <string name="settings_section_world_label">World</string>
+    <string name="settings_section_world_value" translatable="false">world</string>
+
+    <!-- Label for Technology Section option -->
+    <string name="settings_section_technology_label">Technology</string>
+    <string name="settings_section_technology_value" translatable="false">technology</string>
+
+    <!-- Label for Business Section option -->
+    <string name="settings_section_business_label">Business</string>
+    <string name="settings_section_business_value" translatable="false">business</string>
+
+    <!-- Label for Science Section option -->
+    <string name="settings_section_science_label">Science</string>
+    <string name="settings_section_science_value" translatable="false">science</string>
+
+    <!-- Label for Games Section option -->
+    <string name="settings_section_games_label">Games</string>
+    <string name="settings_section_games_value" translatable="false">games</string>
+
+    <!-- Label for Film Section option -->
+    <string name="settings_section_film_label">Film</string>
+    <string name="settings_section_film_value" translatable="false">film</string>
+
+    <!-- Strings For Search Term Preference -->
+    <string name="settings_search_term_label">Search Term</string>
+    <string name="settings_search_term_key" translatable="false">search_term</string>
+    <string name="settings_search_term_default" translatable="false">""</string>
+    <string name="uri_section_param">section</string>
+    <string name="uri_order_by_param">order-by</string>
+    <string name="uri_order_by_value">newest</string>
+    <string name="uri_search_param">q</string>
+    <string name="uri_api_key_param">api-key</string>
+    <string name="uri_api_key_value">test</string>
+    <string name="uri_show_tags_param">show-tags</string>
+    <string name="uri_show_tags_value">contributor</string>
+
 </resources>

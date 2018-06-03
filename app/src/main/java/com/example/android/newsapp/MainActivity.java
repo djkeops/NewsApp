@@ -5,11 +5,15 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     /**
      * URL for articles data from the content.guardianapis.com
      */
-    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?section=technology&from-date=2018-05-24&show-tags=contributor&api-key=test";
+    private static final String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search";
 
     /**
      * Constant value for the article loader ID
@@ -113,8 +117,29 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     public Loader<List<Article>> onCreateLoader(int i, Bundle bundle) {
 
-        // Create a new loader for the given URL
-        return new ArticleLoader(this, GUARDIAN_REQUEST_URL);
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        // getString retrieves a String value from the preferences. The second parameter is the default value for this preference.
+        String searchTerm = sharedPrefs.getString(getString(R.string.settings_search_term_key), getString(R.string.settings_search_term_default));
+        String section = sharedPrefs.getString(getString(R.string.settings_section_key), getString(R.string.settings_section_default));
+
+        // parse breaks apart the URI string that's passed into its parameter
+        Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
+
+        // buildUpon prepares the baseUri
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        // Append query parameter and its value. For example: section=technology
+        if (!section.equals(getString(R.string.settings_section_default))) {
+            uriBuilder.appendQueryParameter(getString(R.string.uri_section_param), section);
+        }
+        uriBuilder.appendQueryParameter(getString(R.string.uri_order_by_param), getString(R.string.uri_order_by_value));
+        uriBuilder.appendQueryParameter(getString(R.string.uri_search_param), searchTerm);
+        uriBuilder.appendQueryParameter(getString(R.string.uri_show_tags_param), getString(R.string.uri_show_tags_value));
+        uriBuilder.appendQueryParameter(getString(R.string.uri_api_key_param), getString(R.string.uri_api_key_value));
+
+        // Return the completed uri. For example: https://content.guardianapis.com/search?section=technology&from-date=2018-05-24&show-tags=contributor&api-key=test
+        return new ArticleLoader(this, uriBuilder.toString());
     }
 
     @Override
@@ -139,5 +164,25 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     public void onLoaderReset(Loader<List<Article>> loader) {
         // Clear the existing data.
         mAdapter.clear();
+    }
+
+    @Override
+    // This method initialize the contents of the Activity's options menu.
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the Options Menu specified in XML
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    // This method is called whenever an item in the options menu is selected.
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -50,6 +50,8 @@
     <string name="settings_search_term_label">Search Term</string>
     <string name="settings_search_term_key" translatable="false">search_term</string>
     <string name="settings_search_term_default" translatable="false">""</string>
+
+    <!-- Strings For URI Builder -->
     <string name="uri_section_param">section</string>
     <string name="uri_order_by_param">order-by</string>
     <string name="uri_order_by_value">newest</string>

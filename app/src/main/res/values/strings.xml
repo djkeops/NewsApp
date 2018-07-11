@@ -57,7 +57,7 @@
     <string name="uri_order_by_value">newest</string>
     <string name="uri_search_param">q</string>
     <string name="uri_api_key_param">api-key</string>
-    <string name="uri_api_key_value">test</string>
+    <string name="uri_api_key_value">f63adf1c-2ec8-4b98-9374-7e32d619fb65</string>
     <string name="uri_show_tags_param">show-tags</string>
     <string name="uri_show_tags_value">contributor</string>
 
